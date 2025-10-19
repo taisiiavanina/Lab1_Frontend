@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welmari</title>
+</head>
+<body>
+    <header>
+        <button class="button-ui bg-color-dark-grey"><a href="index.html">Головна сторінка</a></button>
+        <center>
+            <img src="wlmr.jpg" alt="Логотип сайту" width="120" height="80", style="border-radius: 50%;">
+        </center>
+    </header>
+    <h2 style="text-align: center;">Welmari</h1>
+    <nav class="menu">
+        <ul>
+            <li><a href="products.html">Каталог</a></li>
+            <li><a href="reviews.html">Відгуки про товар</a></li>
+            <li><a href="feedback.html">Зворотній зв'язок</a></li>
+        </ul>
+
+    </nav>
+    <main>
+        <h2>Відгуки про товари</h2>
+
+    <div class="review">
+        <strong>Олена:</strong>
+        <p>Кофтинка з вовни дуже тепла та якісна. Доставка швидка, задоволена покупкою!</p>
+    </div>
+
+    <div class="review">
+        <strong>Марія:</strong>
+        <p>Футболка оверсайз підійшла за розміром, матеріал приємний до тіла. Рекомендую.</p>
+    </div>
+    
+    <div class="review-form">
+        <h2>Додати свій відгук</h2>
+        <form action="index.html" method="get">
+            <label for="username">Ім’я:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="product">Товар:</label>
+            <input type="text" id="product" name="product" required>
+
+            <label for="review">Відгук:</label>
+            <textarea id="review" name="review" maxlength="500" placeholder="Напишіть свій відгук" required></textarea>
+
+            <button type="submit">Відправити</button>
+        </form>
+    </div>
+
+    </main>
+</body>
+<footer>
+        <p><i>Інтернет-магазин Welmari</i></p>
+    </footer>
+</html>
