@@ -3,56 +3,121 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welmari</title>
+    <title>Відгуки - Welmari</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="reviews-page">
     <header>
-        <button class="button-ui bg-color-dark-grey"><a href="index.html">Головна сторінка</a></button>
-        <center>
-            <img src="wlmr.jpg" alt="Логотип сайту" width="120" height="80", style="border-radius: 50%;">
-        </center>
+        <button class="button-ui"><a href="index.html">Головна сторінка</a></button>
+        <div style="text-align: center; padding: 10px;">
+            <img src="wlmr.jpg" alt="Логотип сайту" width="120" height="80" style="border-radius: 50%;">
+        </div>
     </header>
-    <h2 style="text-align: center;">Welmari</h1>
+    
+    <h1>Welmari</h1>
+    
     <nav class="menu">
         <ul>
             <li><a href="products.html">Каталог</a></li>
             <li><a href="reviews.html">Відгуки про товар</a></li>
             <li><a href="feedback.html">Зворотній зв'язок</a></li>
         </ul>
-
     </nav>
-    <main>
-        <h2>Відгуки про товари</h2>
-
-    <div class="review">
-        <strong>Олена:</strong>
-        <p>Кофтинка з вовни дуже тепла та якісна. Доставка швидка, задоволена покупкою!</p>
-    </div>
-
-    <div class="review">
-        <strong>Марія:</strong>
-        <p>Футболка оверсайз підійшла за розміром, матеріал приємний до тіла. Рекомендую.</p>
-    </div>
     
-    <div class="review-form">
-        <h2>Додати свій відгук</h2>
-        <form action="index.html" method="get">
-            <label for="username">Ім’я:</label>
-            <input type="text" id="username" name="username" required>
+    <main>
+        <h2 style="text-align: center;">Відгуки наших клієнтів</h2>
 
-            <label for="product">Товар:</label>
-            <input type="text" id="product" name="product" required>
+        <div class="grid-layout">
+            <div class="grid-item review">
+                <strong>Олена М.</strong>
+                <p>⭐⭐⭐⭐⭐</p>
+                <p>Кофтинка з вовни дуже тепла та якісна. Доставка швидка, задоволена покупкою! 
+                Матеріал приємний до тіла, не колеться. Рекомендую!</p>
+                <p style="color: #888; font-size: 0.9em; margin-top: 10px;">Товар: Кофтинка з вовни</p>
+            </div>
 
-            <label for="review">Відгук:</label>
-            <textarea id="review" name="review" maxlength="500" placeholder="Напишіть свій відгук" required></textarea>
+            <div class="grid-item review">
+                <strong>Марія К.</strong>
+                <p>⭐⭐⭐⭐⭐</p>
+                <p>Футболка оверсайз підійшла за розміром, матеріал приємний до тіла. Рекомендую. 
+                Вже замовила ще дві в інших кольорах!</p>
+                <p style="color: #888; font-size: 0.9em; margin-top: 10px;">Товар: Футболка оверсайз</p>
+            </div>
 
-            <button type="submit">Відправити</button>
-        </form>
-    </div>
+            <div class="grid-item review">
+                <strong>Анна В.</strong>
+                <p>⭐⭐⭐⭐</p>
+                <p>Широкі джинси дуже зручні, але довелося підшити довжину. Якість на висоті, 
+                колір відповідає фото. Дуже задоволена!</p>
+                <p style="color: #888; font-size: 0.9em; margin-top: 10px;">Товар: Широкі джинси</p>
+            </div>
+
+            <div class="grid-item review">
+                <strong>Софія Л.</strong>
+                <p>⭐⭐⭐⭐⭐</p>
+                <p>Домашній комплект - просто супер! М'який, зручний, не втрачає форму після прання. 
+                Ідеально для відпочинку вдома.</p>
+                <p style="color: #888; font-size: 0.9em; margin-top: 10px;">Товар: Домашній комплект</p>
+            </div>
+
+            <div class="grid-item review">
+                <strong>Катерина П.</strong>
+                <p>⭐⭐⭐⭐⭐</p>
+                <p>Спортивний костюм відмінної якості! Тканина дихає, не обмежує рухів. 
+                Використовую для тренувань та прогулянок. Дуже рекомендую!</p>
+                <p style="color: #888; font-size: 0.9em; margin-top: 10px;">Товар: Спортивний костюм</p>
+            </div>
+
+            <div class="grid-item review">
+                <strong>Наталія Г.</strong>
+                <p>⭐⭐⭐⭐</p>
+                <p>Лонгслів оверсайз чудовий, але розмір трохи більший ніж очікувала. 
+                Якість матеріалу відмінна, колір як на фото.</p>
+                <p style="color: #888; font-size: 0.9em; margin-top: 10px;">Товар: Лонгслів оверсайз</p>
+            </div>
+        </div>
+
+        <!-- Форма додавання відгуку -->
+        <div class="review-form">
+            <h2>Додати свій відгук</h2>
+            <p style="color: #555; margin-bottom: 20px;">
+                Поділіться своїм досвідом покупки! Ваша думка важлива для нас та інших покупців.
+            </p>
+            
+            <form action="index.html" method="get">
+                <label for="username">Ім'я:</label>
+                <input type="text" id="username" name="username" required placeholder="Ваше ім'я">
+
+                <label for="product">Товар:</label>
+                <input type="text" id="product" name="product" required placeholder="Назва товару">
+
+                <label for="rating">Оцінка:</label>
+                <select id="rating" name="rating" required>
+                    <option value="">Оберіть оцінку</option>
+                    <option value="5">⭐⭐⭐⭐⭐ (Відмінно)</option>
+                    <option value="4">⭐⭐⭐⭐ (Добре)</option>
+                    <option value="3">⭐⭐⭐ (Задовільно)</option>
+                    <option value="2">⭐⭐ (Погано)</option>
+                    <option value="1">⭐ (Дуже погано)</option>
+                </select>
+
+                <label for="review">Ваш відгук:</label>
+                <textarea id="review" name="review" maxlength="500" placeholder="Напишіть свій відгук про товар..." required></textarea>
+
+                <div class="consent">
+                    <input type="checkbox" id="publish-consent" name="publish-consent" required>
+                    <label for="publish-consent">Я даю згоду на публікацію мого відгуку</label>
+                </div>
+
+                <button type="submit">Відправити відгук</button>
+            </form>
+        </div>
 
     </main>
-</body>
-<footer>
-        <p><i>Інтернет-магазин Welmari</i></p>
+
+    <footer>
+        <p><i>Інтернет-магазин Welmari © 2024</i></p>
+        <p>Всі права захищені | <a href="#">Політика конфіденційності</a></p>
     </footer>
+</body>
 </html>

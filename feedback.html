@@ -3,73 +3,154 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welmari</title>
+    <title>Зворотній зв'язок - Welmari</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="feedback-page">
     <header>
-        <button class="button-ui bg-color-dark-grey"><a href="index.html">Головна сторінка</a></button>
-        <center>
-            <img src="wlmr.jpg" alt="Логотип сайту" width="120" height="80", style="border-radius: 50%;">
-        </center>
+        <button class="button-ui"><a href="index.html">Головна сторінка</a></button>
+        <div style="text-align: center; padding: 10px;">
+            <img src="wlmr.jpg" alt="Логотип сайту" width="120" height="80" style="border-radius: 50%;">
+        </div>
     </header>
-    <h2 style="text-align: center;">Welmari</h1>
+    
+    <h1>Welmari</h1>
+    
     <nav class="menu">
         <ul>
             <li><a href="products.html">Каталог</a></li>
             <li><a href="reviews.html">Відгуки про товар</a></li>
             <li><a href="feedback.html">Зворотній зв'язок</a></li>
         </ul>
-
     </nav>
+    
     <main>
-         <h1 style="text-align:center;">Зворотній зв’язок</h1>
+        <h1 style="text-align:center;">Зворотній зв'язок</h1>
+        
+        <p style="text-align: center; max-width: 600px; margin: 0 auto 40px; color: #555;">
+            Маєте питання або пропозиції? Заповніть форму нижче, і наша команда зв'яжеться з вами найближчим часом.
+        </p>
 
-    <form action="index.html" method="get">
-    <fieldset>
-        <legend>Персональна інформація</legend>
+        <div class="flex-contact-form">
+            <!-- Flex item 1 - Контактна інформація -->
+            <div class="flex-item">
+                <h3>📍 Наші контакти</h3>
+                
+                <div style="margin-bottom: 15px;">
+                    <strong style="color: #8B7355;">Адреса:</strong>
+                    <p>м. Київ, вул. Юлії Здановської 77</p>
+                </div>
+                
+                <div style="margin-bottom: 15px;">
+                    <strong style="color: #8B7355;">Телефон:</strong>
+                    <p><a href="tel:+380123456789">+38 (012) 345-67-89</a></p>
+                </div>
+                
+                <div style="margin-bottom: 15px;">
+                    <strong style="color: #8B7355;">Email:</strong>
+                    <p><a href="mailto:info@welmari.ua">info@welmari.ua</a></p>
+                </div>
+                
+                <div style="margin-bottom: 15px;">
+                    <strong style="color: #8B7355;">Графік роботи:</strong>
+                    <p>
+                        Понеділок - П'ятниця: 9:00 - 20:00<br>
+                        Субота - Неділя: 10:00 - 18:00
+                    </p>
+                </div>
+                
+            </div>
 
-        <label for="name">Прізвище та ім’я:</label>
-        <input type="text" id="name" name="name" required>
+            <!-- Flex item 2 - Форма зворотного зв'язку -->
+            <div class="flex-item">
+                <h3 style="color: #8B7355; margin-bottom: 20px;">✉️ Напишіть нам</h3>
+                
+                <form action="index.html" method="get">
+                    <fieldset>
+                        <legend>Персональна інформація</legend>
 
-        <label for="email">E-mail:</label>
-        <input type="email" id="email" name="email" required>
+                        <label for="name">Прізвище та ім'я:</label>
+                        <input type="text" id="name" name="name" required placeholder="Введіть ваше прізвище та ім'я">
 
-        <label for="age">Вік:</label>
-        <input type="number" id="age" name="age" min="1" max="120" required>
+                        <label for="email">E-mail:</label>
+                        <input type="email" id="email" name="email" required placeholder="example@email.com">
 
-        <label for="education">Освіта:</label>
-        <select id="education" name="education" required>
-            <option value="">Оберіть освіту</option>
-            <option value="повна">Повна</option>
-            <option value="неповна">Неповна</option>
-            <option value="вища">Вища</option>
-            <option value="професійна">Професійна</option>
-        </select>
+                        <label for="age">Вік:</label>
+                        <input type="number" id="age" name="age" min="1" max="120" required placeholder="Ваш вік">
 
-    </fieldset>
+                        <label for="education">Освіта:</label>
+                        <select id="education" name="education" required>
+                            <option value="">Оберіть освіту</option>
+                            <option value="повна">Повна середня</option>
+                            <option value="неповна">Неповна середня</option>
+                            <option value="вища">Вища</option>
+                            <option value="професійна">Професійна</option>
+                        </select>
+                    </fieldset>
 
-    <label for="purpose">Мета зворотнього зв’язку:</label>
-    <select id="purpose" name="purpose" required>
-        <option value="">Оберіть мету</option>
-        <option value="співпраця">Співпраця</option>
-        <option value="скарга">Скарга на порушення права власності</option>
-        <option value="пропозиція">Пропозиція</option>
-        <option value="помилка">Наявність помилки</option>
-    </select>
+                    <label for="purpose">Мета зворотнього зв'язку:</label>
+                    <select id="purpose" name="purpose" required>
+                        <option value="">Оберіть мету</option>
+                        <option value="співпраця">Співпраця</option>
+                        <option value="скарга">Скарга на порушення права власності</option>
+                        <option value="пропозиція">Пропозиція</option>
+                        <option value="помилка">Наявність помилки</option>
+                        <option value="замовлення">Питання про замовлення</option>
+                    </select>
 
-    <label for="details">Детально:</label>
-    <textarea id="details" name="details" maxlength="500" placeholder="Опишіть детально вашу ситуацію"></textarea>
+                    <label for="details">Детально:</label>
+                    <textarea id="details" name="details" maxlength="500" placeholder="Опишіть детально вашу ситуацію" required></textarea>
 
-    <div class="consent">
-        <input type="checkbox" id="consent" name="consent" required>
-        <label for="consent">Я даю згоду на обробку моїх даних</label>
-    </div>
+                    <div class="consent">
+                        <input type="checkbox" id="consent" name="consent" required>
+                        <label for="consent">Я даю згоду на обробку моїх даних</label>
+                    </div>
 
-    <button type="submit" class="submit-btn">Відправити</button>
-</form>
+                    <button type="submit" class="submit-btn">Відправити</button>
+                </form>
+            </div>
 
-</body>
-<footer>
-        <p><i>Інтернет-магазин Welmari</i></p>
+            <!-- Flex item 3 - Додаткова інформація -->
+            <div class="flex-item">
+                <h3>Корисна інформація</h3>
+                
+                <div style="margin-bottom: 20px;">
+                    <h4 style="color: #8B7355; margin-bottom: 10px;">Час відповіді</h4>
+                    <p>Ми відповідаємо на всі звернення протягом 24 годин у робочі дні.</p>
+                </div>
+                
+                <div style="margin-bottom: 20px;">
+                    <h4 style="color: #8B7355; margin-bottom: 10px;">Гаряча лінія</h4>
+                    <p>Для термінових питань телефонуйте: <br>
+                    <strong><a href="tel:+380123456789">+38 (012) 345-67-89</a></strong></p>
+                </div>
+                
+                <div style="margin-bottom: 20px;">
+                    <h4 style="color: #8B7355; margin-bottom: 10px;">Часті питання</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 8px;">
+                            <a href="#faq1" style="color: #555;">Як оформити замовлення?</a>
+                        </li>
+                        <li style="margin-bottom: 8px;">
+                            <a href="#faq2" style="color: #555;">Способи оплати</a>
+                        </li>
+                        <li style="margin-bottom: 8px;">
+                            <a href="#faq3" style="color: #555;">Умови повернення</a>
+                        </li>
+                        <li style="margin-bottom: 8px;">
+                            <a href="#faq4" style="color: #555;">Таблиця розмірів</a>
+                        </li>
+                    </ul>
+                </div>
+                
+                
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p><i>Інтернет-магазин Welmari © 2024</i></p>
+        <p>Всі права захищені | <a href="#">Політика конфіденційності</a></p>
     </footer>
+</body>
 </html>
