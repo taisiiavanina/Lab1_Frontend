@@ -1,0 +1,198 @@
+// ======= ЗАВДАННЯ 1: УПРАВЛІННЯ ТОВАРАМИ =======
+
+// Створення 10 записів товарів
+const baseProducts = [
+  { articleNumber: 'ABC123', internalId: 1, name: 'Ноутбук', country: 'Китай', price1_invalid: 15000, price2_invalid: 14800, price3_valid: 12500, quantity: 10 },
+  { articleNumber: 'DEF456', internalId: 2, name: 'Клавіатура', country: 'Японія', price1_invalid: 1500, price2_invalid: 1400, price3_valid: 1200, quantity: 25 },
+  { articleNumber: 'GHI789', internalId: 3, name: 'Мишка', country: 'Південна Корея', price1_invalid: 800, price2_invalid: 750, price3_valid: 600, quantity: 40 },
+  { articleNumber: 'JKL012', internalId: 4, name: 'Монітор', country: 'Китай', price1_invalid: 8000, price2_invalid: 7500, price3_valid: 6500, quantity: 8 },
+  { articleNumber: 'MNO345', internalId: 5, name: 'Наушники', country: 'Японія', price1_invalid: 3000, price2_invalid: 2800, price3_valid: 2200, quantity: 15 },
+  { articleNumber: 'PQR678', internalId: 6, name: 'Вебкамера', country: 'США', price1_invalid: 2500, price2_invalid: 2300, price3_valid: 1900, quantity: 12 },
+  { articleNumber: 'STU901', internalId: 7, name: 'Маршрутизатор', country: 'Китай', price1_invalid: 4000, price2_invalid: 3800, price3_valid: 3200, quantity: 18 },
+  { articleNumber: 'VWX234', internalId: 8, name: 'Жорсткий диск', country: 'Тайвань', price1_invalid: 3500, price2_invalid: 3200, price3_valid: 2800, quantity: 22 },
+  { articleNumber: 'YZA567', internalId: 9, name: 'SSD накопичувач', country: 'США', price1_invalid: 5000, price2_invalid: 4700, price3_valid: 4000, quantity: 16 },
+  { articleNumber: 'BCD890', internalId: 10, name: 'Блок живлення', country: 'Південна Корея', price1_invalid: 2000, price2_invalid: 1800, price3_valid: 1500, quantity: 30 }
+];
+
+const products1 = [...baseProducts];
+const products2 = [...baseProducts];
+const products3 = [...baseProducts];
+
+// 1.1 Впорядкування за країною та середня вартість
+products1.sort((a, b) => a.country.localeCompare(b.country, 'uk'));
+
+const countryGroups = {};
+products1.forEach(product => {
+  if (!countryGroups[product.country]) {
+    countryGroups[product.country] = [];
+  }
+  countryGroups[product.country].push(product);
+});
+
+for (const country in countryGroups) {
+  const productsInCountry = countryGroups[country];
+  const avgPrice = productsInCountry.reduce((sum, p) => sum + p.price3_valid, 0) / productsInCountry.length;
+  console.log(`${country} – Середня ціна: ${avgPrice.toFixed(2)} грн.`);
+}
+
+// 1.2 Товар з мінімальною вартістю2_недіюча
+let minProduct = products1[0];
+let minPrice = products1[0].price2_invalid;
+
+for (let i = 1; i < products1.length; i++) {
+  if (products1[i].price2_invalid < minPrice) {
+    minPrice = products1[i].price2_invalid;
+    minProduct = products1[i];
+  }
+}
+
+console.log(`Товар з мін. ціною2: ID=${minProduct.internalId}, ${minProduct.name}`);
+
+// 1.3 Додавання нового товару
+function addNewProduct(newProduct, arr) {
+  const requiredFields = ['articleNumber', 'internalId', 'name', 'country', 'price1_invalid', 'price2_invalid', 'price3_valid', 'quantity'];
+  const hasAllFields = requiredFields.every(field => newProduct[field] !== undefined);
+
+  if (!hasAllFields) {
+    arr.push(newProduct); // неповні дані – в кінець
+  } else {
+    arr.unshift(newProduct); // повні дані – на початок
+  }
+}
+
+// Додавання товару з неповними даними
+addNewProduct({ articleNumber: 'NEW001', internalId: 11, name: 'Нова клавіатура' }, products2);
+console.log(`1.3a. Товар з неповними даними додано в кінець. Всього: ${products2.length}`);
+
+// Додавання товару з повними даними
+addNewProduct({ articleNumber: 'PREM001', internalId: 12, name: 'Премiум монітор', country: 'Сінгапур', price1_invalid: 12000, price2_invalid: 11500, price3_valid: 9999, quantity: 5 }, products2);
+console.log(`1.3b. Товар з повними даними додано на початок. Всього: ${products2.length}`);
+
+// 1.4 Динаміка зміни ціни
+products3.forEach(product => {
+  const prices = [product.price1_invalid, product.price2_invalid, product.price3_valid];
+
+  let isDecreasing = true;
+  let isIncreasing = true;
+
+  for (let i = 1; i < prices.length; i++) {
+    if (prices[i] >= prices[i - 1]) isDecreasing = false;
+    if (prices[i] <= prices[i - 1]) isIncreasing = false;
+  }
+
+  let priceStatus = 'не стабільні зміни';
+  if (isDecreasing) priceStatus = 'стабільно дешевшає';
+  else if (isIncreasing) priceStatus = 'стабільно дорожчає';
+
+  console.log(`${product.name}: ${priceStatus}`);
+});
+
+
+// ======= ЗАВДАННЯ 2: ОБЛІКОВІ ЗАПИСИ КОРИСТУВАЧІВ =======
+
+// Клас користувача
+class User {
+  constructor(lastName, firstName, age, education, feedbackGoal, contactDate, contactTime) {
+    this.lastName = lastName;
+    this.firstName = firstName;
+    this.age = age;
+    this.education = education;
+    this.feedbackGoal = feedbackGoal;
+    this.contactDate = new Date(contactDate);
+    this.contactTime = contactTime;
+  }
+
+  _getTimeAsMinutes() {
+    const [hours, minutes] = this.contactTime.split(':').map(Number);
+    return hours * 60 + minutes;
+  }
+
+  getFullName() {
+    return `${this.lastName} ${this.firstName}`;
+  }
+
+  isBusinessHours() {
+    const minutes = this._getTimeAsMinutes();
+    return minutes >= 9 * 60 && minutes <= 18 * 60;
+  }
+
+  classify() {
+    const isBusinessTime = this.isBusinessHours();
+    if (isBusinessTime && this.feedbackGoal === 'претензія') {
+      return 'звернулись з претензією у робочий час';
+    } else if (isBusinessTime && this.feedbackGoal === 'побажання') {
+      return 'звернулись з побажанням у робочий час';
+    } else {
+      return 'Інші';
+    }
+  }
+
+  getEducationInfo() {
+    return `${this.getFullName()} – Освіта: ${this.education}`;
+  }
+}
+
+// Масив 10 користувачів
+const users = [
+  new User('Петренко', 'Іван', 28, 'Вища', 'претензія', '2025-11-05', '10:30'),
+  new User('Сидоренко', 'Марія', 35, 'Вища технічна', 'побажання', '2025-11-10', '14:45'),
+  new User('Кравченко', 'Дмитро', 22, 'Середня', 'інше', '2025-11-08', '08:00'),
+  new User('Шевченко', 'Олена', 31, 'Вища', 'претензія', '2025-11-07', '16:00'),
+  new User('Морозов', 'Артем', 26, 'Неповна вища', 'побажання', '2025-11-10', '12:15'),
+  new User('Волощук', 'Ксенія', 29, 'Вища', 'претензія', '2025-11-06', '09:00'),
+  new User('Іванов', 'Сергій', 34, 'Вища технічна', 'побажання', '2025-11-10', '17:30'),
+  new User('Яцик', 'Тетяна', 27, 'Середня спеціальна', 'інше', '2025-10-15', '22:00'),
+  new User('Коваль', 'Вадим', 30, 'Вища', 'претензія', '2025-11-09', '11:00'),
+  new User('Ромашкевич', 'Світлана', 25, 'Вища', 'побажання', '2025-11-10', '10:00')
+];
+
+// 2.1 Користувачі за листопадом близько 10:00
+const novemberUsers = users.filter(u => u.contactDate.getMonth() === 10 && u.contactDate.getFullYear() === 2025);
+const usersAroundTen = novemberUsers.filter(u => {
+  const minutes = u._getTimeAsMinutes();
+  return Math.abs(minutes - 10 * 60) < 120;
+});
+
+console.log("2.1. Користувачі за листопадом (близько 10:00):");
+usersAroundTen.forEach(u => console.log(`${u.getFullName()} – ${u.contactDate.toLocaleDateString('uk-UA')} ${u.contactTime}`));
+
+// 2.2 Середній вік та користувачи з таким віком
+const averageAge = Math.round(users.reduce((sum, u) => sum + u.age, 0) / users.length);
+const matchingUsers = users.filter(u => u.age === averageAge);
+
+console.log(`2.2. Середній вік: ${averageAge} років`);
+if (matchingUsers.length > 0) {
+  console.log("Користувачи з таким віком:");
+  matchingUsers.forEach(u => console.log(u.getEducationInfo()));
+}
+
+// 2.3 Класифікація за часом та метою
+const classification = {
+  'звернулись з претензією у робочий час': 0,
+  'звернулись з побажанням у робочий час': 0,
+  'Інші': 0
+};
+
+users.forEach(u => {
+  classification[u.classify()]++;
+});
+
+console.log("2.3. Класифікація користувачів:");
+for (const category in classification) {
+  console.log(`${category}: ${classification[category]} користувачів`);
+}
+
+// 2.4a Сортування за віком (спадання)
+const sortedByAge = [...users].sort((a, b) => b.age - a.age);
+console.log("2.4a. Сортування за віком (спадання):");
+sortedByAge.forEach(u => console.log(`${u.getFullName()} – ${u.age} років`));
+
+// 2.4b Сортування по алфавіту
+const sortedByName = [...users].sort((a, b) => {
+  const nameA = `${a.lastName} ${a.firstName}`;
+  const nameB = `${b.lastName} ${b.firstName}`;
+  return nameA.localeCompare(nameB, 'uk');
+});
+
+console.log("2.4b. Сортування по алфавіту:");
+sortedByName.forEach(u => console.log(`${u.getFullName()} – ${u.education}`));
